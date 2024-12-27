@@ -1,0 +1,91 @@
+<div class="main-container">
+  <!-- Barra superior -->
+  <header class="top-bar">
+    <div class="logo">Aplicación SaaS, SD</div>
+    <div class="top-menu">
+      <button (click)="toggleSidebar()" class="user-circle">
+        <img src="https://via.placeholder.com/40" alt="User Avatar" class="avatar" />
+      </button>
+    </div>
+  </header>
+
+  <!-- Barra lateral (desplegable) -->
+  <nav class="sidebar" [class.open]="sidebarOpen">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Profile</a></li>
+      <li><a href="#">Settings</a></li>
+      <li><a href="#">Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- Barra lateral izquierda -->
+  <nav class="left-sidebar" [class.open]="leftSidebarOpen">
+    <div class="toggle-arrow" (click)="toggleLeftSidebar()">
+      <span *ngIf="!leftSidebarOpen">▶</span>
+      <span *ngIf="leftSidebarOpen">◀</span>
+    </div>
+
+    <button (click)="openModal()" class="add-project">+ Crear Proyecto</button>
+
+    <ul>
+      <li *ngFor="let project of projects; let i = index">
+        <a href="#" (click)="selectProject(i)">
+          {{ project.name }}
+          <span *ngIf="selectedProjectIndex === i">▼</span>
+          <span *ngIf="selectedProjectIndex !== i">▶</span>
+        </a>
+
+        <!-- Lista de tareas del proyecto -->
+        <ul *ngIf="selectedProjectIndex === i" class="task-list">
+          <li *ngFor="let task of project.tasks">
+            {{ task.title }} - {{ task.status }}
+          </li>
+        </ul>
+
+        <form (ngSubmit)="addTaskToProject(i)" class="add-task-form" *ngIf="selectedProjectIndex === i">
+          <button type="button" (click)="openUploadModal()">Subir Archivo</button>
+        </form>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Modal para crear/editar un proyecto -->
+  <div class="modal" *ngIf="isModalOpen">
+    <div class="modal-content">
+      <span (click)="closeModal()" class="close-btn">&times;</span>
+      <h2>Configurar Proyecto</h2>
+      <form (ngSubmit)="createProject()">
+        <label for="projectName">Nombre del Proyecto</label>
+        <input type="text" id="projectName" [(ngModel)]="newProject.name" name="projectName" required />
+
+        <label for="admin">Administrador del Proyecto</label>
+        <input type="text" id="admin" [(ngModel)]="newProject.admin" name="admin" required />
+
+        <label for="details">Detalles del Proyecto</label>
+        <textarea id="details" [(ngModel)]="newProject.details" name="details" required></textarea>
+
+        <label for="status">Estado del Proyecto</label>
+        <select id="status" [(ngModel)]="newProject.status" name="status" required>
+          <option value="Activo">Activo</option>
+          <option value="Inactivo">Inactivo</option>
+          <option value="Completado">Completado</option>
+        </select>
+
+        <button type="submit">Guardar Proyecto</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal de subida de archivo -->
+  <div class="modal" *ngIf="isUploadModalOpen">
+    <div class="modal-content">
+      <span (click)="closeUploadModal()" class="close-btn">&times;</span>
+      <h2>Subir Archivo</h2>
+      <form (ngSubmit)="uploadFile()">
+        <input type="file" (change)="onFileChange($event)" required />
+        <button type="submit">Subir</button>
+      </form>
+    </div>
+  </div>
+</div>

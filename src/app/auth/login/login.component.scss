@@ -1,0 +1,101 @@
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #003366, #1e4d60, #4b8c8b, #ffffff, #8a8a8a);
+  background-size: 400% 400%;
+  animation: gradientAnimation 8s ease infinite;
+
+  h2 {
+    margin-bottom: 20px;
+    color: #0d13c8;
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  .input-container {
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 400px;
+
+    label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 5px;
+      color: #e0e0e0;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #8c3939;
+      border-radius: 8px;
+      box-sizing: border-box;
+      margin-bottom: 15px;
+      background-color: #d9dff7;
+      transition: border 0.3s, box-shadow 0.3s;
+
+      &:focus {
+        outline: none;
+        border-color: #87c6d4;
+        box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+      }
+    }
+  }
+
+  button {
+    width: 100%;
+    max-width: 400px;
+    padding: 14px;
+    background-color: #4c7caf;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: background-color 0.3s, transform 0.2s;
+
+    &:hover {
+      background-color: #4550a0;
+      transform: translateY(-2px);
+    }
+
+    &.back-button {
+      background-color: #2196F3;
+      margin-top: 10px;
+
+      &:hover {
+        background-color: #2d61fe;
+      }
+    }
+  }
+
+  // Añadiendo sombra al contenedor del formulario
+  form {
+      background-color: #203351;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+  }
+}
+
+/* Animación para el gradiente */
+@keyframes gradientAnimation {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}

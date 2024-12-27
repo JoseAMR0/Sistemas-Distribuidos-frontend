@@ -1,0 +1,48 @@
+.background-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0183b6, #020e23); /* Fondo con gradiente atractivo */
+}
+
+
+
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 5px rgba(251, 247, 247, 0.5); /* Mantén el sombreado si deseas un efecto */
+  color: #83f9ff; /* Color claro para el texto, puedes probar con otros colores como #ffcc00 (amarillo) */
+}
+
+
+.button-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  position: absolute; /* Posiciona los botones de manera absoluta */
+  top: 20px; /* Espaciado desde la parte superior */
+  right: 20px; /* Espaciado desde la parte derecha */
+  
+  button {
+    padding: 12px 24px;
+    border: none;
+    background-color: #4c54af;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+
+    &:hover {
+      background-color: #4582a0;
+      transform: scale(1.05);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
