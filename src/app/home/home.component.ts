@@ -19,4 +19,9 @@ export class HomeComponent {
   redirectToRegister() {
     this.router.navigate(['/auth/register']);
   }
+
+  // Método para redirigir al Main
+  redirectToMain() {
+    this.router.navigate(['/main']);
+  }
 }

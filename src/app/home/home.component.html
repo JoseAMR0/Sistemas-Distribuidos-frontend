@@ -1,11 +1,15 @@
 <div class="background-container">
-    <h1>Cloud Services</h1>
-    
-    <div class="button-container">
-      <button (click)="redirectToLogin()">Login</button>
-      <button (click)="redirectToRegister()">Register</button>
+  <h1>Cloud Services</h1>
+  
+  <div class="button-container">
+    <button (click)="redirectToLogin()">Login</button>
+    <button (click)="redirectToRegister()">Register</button>
   </div>
-    
-    <router-outlet></router-outlet>
+
+  <!-- Contenedor para el botón "Prueba Directa" centrado -->
+  <div class="main-button-container">
+    <button class="main-button" (click)="redirectToMain()">Prueba Directa</button>
   </div>
   
+  <router-outlet></router-outlet>
+</div>
