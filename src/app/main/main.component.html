@@ -9,6 +9,29 @@
     </div>
   </header>
 
+<!-- Mostrar el archivo subido -->
+<div class="uploaded-file-container">
+  <div *ngIf="uploadedFile" class="uploaded-file">
+    <h3>Archivo Subido:</h3>
+    <p>Nombre: {{ uploadedFile.name }}</p>
+    <p>Tamaño: {{ uploadedFile.size / 1024 | number: '1.0-0' }} KB</p>
+    
+    <!-- Enlace de descarga -->
+    <a [href]="downloadLink" download="{{ uploadedFile?.name }}" class="download-link">
+      Descargar Archivo
+    </a>
+    
+    <!-- Mostrar el contenido si es un archivo de texto o PDF -->
+    <div *ngIf="isTextFile" class="file-content">
+      <pre>{{ fileContent }}</pre>
+    </div>
+    <div *ngIf="isPdfFile" class="file-content">
+
+    </div>
+  </div>
+</div>
+
+
   <!-- Barra lateral (desplegable) -->
   <nav class="sidebar" [class.open]="sidebarOpen">
     <ul>
@@ -83,6 +106,7 @@
       <span (click)="closeUploadModal()" class="close-btn">&times;</span>
       <h2>Subir Archivo</h2>
       <form (ngSubmit)="uploadFile()">
+        <!-- Input de archivo -->
         <input type="file" (change)="onFileChange($event)" required />
         <button type="submit">Subir</button>
       </form>

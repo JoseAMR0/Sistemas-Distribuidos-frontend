@@ -7,7 +7,76 @@ $background-color: #20556c;
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: #20556c;
+  background-color: $background-color;
+}
+
+/* Estilo para el archivo subido */
+.uploaded-file {
+  width: 200px; /* Ancho del contenedor */
+  height: auto; /* Dejar que la altura dependa del contenido */
+  padding: 15px;
+  background-color: #e0f7fa; /* Color suave para los archivos subidos */
+  border: 1px solid #b2ebf2;
+  border-radius: 5px;
+  margin-top: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* Centra el texto dentro del contenedor */
+
+  margin-left: 50px; /* Empuja el contenedor hacia la derecha */
+}
+
+/* Estilo del título */
+.uploaded-file h3 {
+  margin-top: 0;
+  font-size: 18px;
+  color: #00796b; /* Color destacado para el título */
+}
+
+/* Estilo del párrafo */
+.uploaded-file p {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+/* Enlace para descargar el archivo */
+.download-link {
+  margin-top: 10px;
+  color: #0056b3;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* Estilo para el contenido del archivo */
+.file-content {
+  margin-top: 20px;
+  width: 100%;
+  overflow-x: auto;
+
+  iframe {
+    border: none;
+    width: 100%; /* Ajustar al ancho del contenedor */
+    height: 400px; /* Tamaño adecuado para visualizar el PDF */
+  }
+
+  pre {
+    font-size: 14px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    overflow: auto;
+  }
 }
 
 
@@ -234,7 +303,7 @@ $background-color: #20556c;
 .add-task-form button,
 .add-task button {
   padding: 8px 16px;
-  background-color: #0056b3;
+  background-color: $primary-color;
   color: white;
   border: none;
   border-radius: 5px;
@@ -243,7 +312,7 @@ $background-color: #20556c;
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: #003f7f;
+    background-color: $secondary-color;
   }
 
   &:disabled {
@@ -363,19 +432,21 @@ $background-color: #20556c;
   }
 }
 
-
 #task-list {
   margin-top: 20px;
 }
+
 .task-item {
   padding: 10px;
   border: 1px solid #ccc;
   margin: 10px 0;
   cursor: pointer;
 }
+
 .task-item:hover {
   background-color: #f0f0f0;
 }
+
 #task-details {
   display: none;
   border: 1px solid #ccc;
